@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Банк SQL</title>
+		<link rel="stylesheet" href="reset.css">
+		<link rel="stylesheet" href="entry.css">
+		<link rel="stylesheet" href="top.css">
+		<link rel="stylesheet" href="slider.css">
+		<link rel="stylesheet" href="main.css">
+		<link rel="stylesheet" href="fonts/fonts-general.css">
+		<script src="jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+// Количество снежинок на странице (Ставьте в границах 30-40, больше не рекомендую)
+var snowmax=35;
+ 
+// Установите цвет снега, добавьте столько цветов сколько пожелаете
+var snowcolor=new Array("#AAAACC","#DDDDFF","#CCCCDD","#F3F3F3","#F0FFFF","#FFFFFF","#EFF5FF")
+ 
+// Поставьте шрифты из которых будет создана снежинка ставьте столько шрифтом сколько хотите
+var snowtype=new Array("Arial Black","Arial Narrow","Times","Comic Sans MS");
+ 
+// Символ из какого будут сделаны снежинки (по умолчанию * )
+var snowletter="*";
+ 
+// Скорость падения снега (рекомендую в границах от 0.3 до 2)
+var sinkspeed=1; 
+ 
+// Максимальный размер снежинки
+var snowmaxsize=40;
+ 
+// Установите минимальный размер снежинки
+var snowminsize=8;
+ 
+// Устанавливаем положение снега
+// Впишите 1 чтобы снег был по всему сайту, 2 только слева 
+// 3 только по центру, 4 снег справа
+var snowingzone=1;
+ 
+ 
+/*
+//   * ПОСЛЕ ЭТОЙ ФРАЗЫ БОЛЬШЕ НЕТ КОНФИГУРАЦИИ*
+*/
+ 
+// НИЧЕГО НЕ ИЗМЕНЯТЬ
+ 
+var snow=new Array();
+var marginbottom;
+var marginright;
+var timer;
+var i_snow=0;
+var x_mv=new Array();
+var crds=new Array();
+var lftrght=new Array();
+var browserinfos=navigator.userAgent;
+var ie5=document.all&&document.getElementById&&!browserinfos.match(/Opera/);
+var ns6=document.getElementById&&!document.all;
+var opera=browserinfos.match(/Opera/);
+var browserok=ie5||ns6||opera;
+function randommaker(range) {
+	rand=Math.floor(range*Math.random());
+	return rand;
+}
+function initsnow() {
+	if (ie5 || opera) {
+		marginbottom=document.body.clientHeight;
+		marginright=document.body.clientWidth;
+	}
+	else if (ns6) {
+		marginbottom=window.innerHeight;
+		marginright=window.innerWidth;
+	}
+	var snowsizerange=snowmaxsize-snowminsize;
+	for (i=0;i<=snowmax;i++) {
+		crds[i]=0;
+		lftrght[i]=Math.random()*15;
+		x_mv[i]=0.03+Math.random()/10;
+		snow[i]=document.getElementById("s"+i);
+		snow[i].style.fontFamily=snowtype[randommaker(snowtype/length)];
+		snow[i].size=randommaker(snowsizerange)+snowminsize;
+		snow[i].style.fontSize=snow[i].size+"px";
+		snow[i].style.color=snowcolor[randommaker(snowcolor.length)];
+		snow[i].sink=sinkspeed*snow[i].size/5;
+		if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
+		if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
+		if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
+		if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
+		snow[i].posy=randommaker(2*marginbottom-marginbottom-2*snow[i].size);
+		snow[i].style.left=snow[i].posx+"px";
+		snow[i].style.top=snow[i].posy+"px";
+	}
+	movesnow();
+}
+function movesnow() {
+	for(i=0;i<=snowmax;i++) {
+		crds[i]+=x_mv[i];
+		snow[i].posy+=snow[i].sink;
+		snow[i].style.left=snow[i].posx+lftrght[i]*Math.sin(crds[i])+"px";
+		snow[i].style.top=snow[i].posy+"px";
+		if (snow[i].posy>=marginbottom-2*snow[i].size || parseInt(snow[i].style.left)>(marginright-3*lftrght[i])) {
+			if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
+			if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
+			if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
+			if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
+			snow[i].posy=0;
+		}
+	}
+	var timer=setTimeout("movesnow()",50);
+}
+for (i=0;i<=snowmax;i++) {
+	
+	document.write("<span id='s"+i+"' style='position:absolute;top:-"+snowmaxsize+"px;'>"+snowletter+"</span>");
+}
+if (browserok) {
+	$(document).ready(function() {
+		$('input[type="submit"]').click(function() { 
+			
+			var entryForm = document.forms["entryForm"];
+			var userName = entryForm.elements["userName"].value;
+
+			if (userName == 'kapustin') {
+
+				setTimeout(function() {
+					initsnow(); 
+				}, 2100);
+
+			}
+		});
+	});
+	
+}
+</script>
+		
+		<script defer src="scripts.js"></script>
+
+	</head>
+	<body class="page">
+       
+		<div class="entry-block entry-block-hover">
+			<h1 class="entry-block__title">Банк SQL</h1>
+			<h1 class="entry-block__desc">Вход в панель управления базой данных</h1>
+			<form action="/entry" method="post" name="entryForm">
+				<div class="entry-block__line-form">
+					<label>Имя</label>
+					<input type="text" name="userName"></input><br>
+				</div>
+				<div class="entry-block__line-form">
+					<label>Пароль</label>
+					<input type="password" name="userPassword"></input>
+				</div>
+				<input type="submit" value="Вход"></input>
+			</form>
+			<div class="entry-block__denied-block">
+				<h2>Данные введены неверно. Доступ запрещен.</h2>
+			</div>
+		</div>
+		
+		<input type="text" class="id_field"></input>
+		
+		<nav class="subheader">
+			<div class="subheader__layout layout">
+					<a class="subheader__logo-link">
+							<img class="subheader__logo" src="images/mysql-logo.jpg" width="66" height="66" alt="logo">
+					</a>
+					<h1 class="subheader__caption">Панель управления</h1>
+
+					<ul class="menu subheader__menu">
+							<li class="menu__item menu-kap">  
+									<a id="go" class="menu__link" data-table="kliyent">Поставить зачет</a>
+							</li>
+							<li class="menu__item menu-kap">  
+									<a id="go" class="menu__link" data-table="kliyent">Принять экзамен</a>
+							</li>
+							<li class="menu__item menu-kap">  
+									<a id="go" class="menu__link" data-table="kliyent">Снести базу данных</a>
+							</li>
+							<li class="menu__item menu-kap">  
+									<a id="go" class="menu__link" data-table="kliyent">Занять место Коропа</a>
+							</li>
+							<li class="menu__item menu-kap">  
+									<a id="go" class="menu__link" data-table="kliyent">Позвать Шкандыбина</a>
+							</li>
+							<li class="menu__item menu-kap">  
+									<a id="go" class="menu__link" data-table="kliyent">Вызвать дракона</a>
+							</li>
+							<li class="menu__item">  
+									<a id="go" class="menu__link menu__link_active" data-table="kliyent">Клиенты</a>
+							</li>
+							<li class="menu__item">
+									<a class="menu__link" data-table="uslugi">Услуги</a>
+							</li>
+							<li class="menu__item">
+									<a class="menu__link" data-table="operatsii">Операции</a>
+							</li>
+							<li class="menu__item menu__link-del">
+									<a class="menu__link" data-table="otdeleniye">Отделение</a>
+							</li>
+							<li class="menu__item menu__link-del">
+									<a class="menu__link" data-table="sotrudnik">Сотрудники</a>
+							</li>
+							<li class="menu__item menu__link-del">
+									<a class="menu__link" data-table="postavshchik">Поставщики</a>
+							</li>
+					</ul>
+					<button class="subheader__menu-mobile-select" id="show_menu"></button>
+					<nav class="sidebar-mobile">
+							<header class="header header_menu_mobile">
+									<div class="login">
+											<div class="login__item status">
+													<span>Статус - <a class="login__link link" href="#"> Администратор</a></span>
+													
+											</div>
+											
+									</div>
+									<span class="menu-mobile__close">
+												<img class="menu-mobile__close-icon" id="close_menu" src="images/close-del.svg">
+										</span>
+							</header>
+							<div class="block-admin-query">
+								<form action="/232" method="post" name="queryAdminForm">
+									<input type="text" placeholder="Введите SQL-запрос" name="fieldQuery" class="field-query">
+								</form>
+							</div>
+							<ul class="menu-mobile">
+								<li class="menu-mobile__item">
+									
+								<form action="/user/add" name="addUserForm" method="post">
+									
+									<h2>Добавление пользователей</h2>
+									<label>Имя</label>
+									<input type="text" name="addUsername"></input>
+									<label>Пароль</label>
+									<input type="text" name="addPassword"></input>
+
+									<div>
+										<input type="submit" value="Добавить"></input>
+									</div>
+									
+								</form>
+								</li>
+								<li class="menu-mobile__header">
+										<span class="menu-mobile__caption">Список пользователей</span>
+										
+								</li>
+								<li class="menu-mobile__item">
+										<a class="menu-mobile__link menu-mobile__link_active">Администратор (root)
+
+										</a>
+								</li>
+								<div id="forUsers">
+								
+								
+								</div>
+								
+			
+		
+							</ul>
+					</nav>
+			</div>
+	</nav>
+		
+		<header class="header">
+			<div class="header__layout layout">
+				<div class="login header__login">
+						<div class="login__item">
+								<img class="login__icon" src="images/profile-plus.svg" alt="icon">
+								<a class="login__link link" id="btn-insert" href="#">Добавить</a>
+						</div>
+						<div class="login__item">
+								<img class="login__icon" src="images/profile.svg" alt="icon">
+								<a class="login__link link btn-change" href="#">Изменить</a>
+						</div>
+						<div class="login__item login__item-del">
+								<img class="login__icon login__icon-delete" src="images/close-del.svg" alt="icon">
+								<a class="login__link link btn-drop" href="#">Удалить</a>
+						</div>
+				</div>
+
+				<div id="print"><img src="images/printer.png" alt=""></div>
+				<div id="sort">
+					<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGzSURBVFhH7ZbBSsNAEIYj6kURTyqoIHgS8eAbCD5DK81uUfBQEUUFEa12s4KPoGSTWi+CFw/iA3gSRfFYFbx69RWE1pk4MW2x6W4REcwHS/ff7OabhELG+rOUthb7fJnroWgEnq1aVgdFM07yqQFPsEfl8DLOaVkb5bArV2ZnKeoDhwZB+gSj4jm82k4BUs500VSfSMzu4ffsc7AHXDMpwBd8x5f2BMXWHOczQ/Cqn1Hsb6f7leAujmBOBWBxtD0WVeBzhzIzTDEevCmKYdyhDNdCOc7DAnCPzhs42mNjfi7XTTEez7GXPYddh2KkVo7gNfgP3MAbWKKlpsC9XpTkKYrmNMpNUIK9egXGKJqTyCkakcgpmpPIKRqRyCmak8gpGvFrcley8dPNbC/FgO/kuO88ne6kGA98tw9Avk+xKfCNv8RGo74XqJe7BTvjCf5elGyaln6Gmr7vq4BaeSiGsYFZC3iiBeXYnGIsjQWE8kjM1mirHnDDKWiFJim2JOr1g2bzDVqpi7bESFHyUbU7P0JRCywAxGXq9ytKZFfpkhlweB2qX6GoTVCAYLftnP0PWNYH8YVUmcMq//kAAAAASUVORK5CYII=">
+				</div>
+				<div class="header__info">
+						
+					<form class="header__search-form">
+							<input class="header__input" type="text" placeholder="Введите запрос...">
+							<input class="header__submit" type="submit" value="">
+					</form>
+				</div>
+			</div>
+		</header>
+		
+		<div class="slider">
+               
+			<ul class="slider__wrapper" data-current="0">
+					<li class="slider__slide slider__slide_1" data-currSlide="0">
+					
+						 
+						 
+							<div class="slider__layout layout">
+									<div class="slider__info">
+											<form name="slideChooseForm" method="post" action="/slideChoose_Articles">
+												<div class="form__label-block form__label-block_id">
+													<label>Идентификационный код</label>
+													<input type="text" required minlength="10" maxlength="10" name="id_kliyent" min></input>
+												</div>
+												<div class="form__label-block form__label-block_fio">
+													<label>ФИО</label>
+													<input type="text" required minlength="5" maxlength="40" name="fio_kliyent"></input>
+												</div>
+												<div class="form__label-block">
+													<label>Номер паспорта</label>
+													<input type="text" minlength="8" maxlength="8" required name="passport_kliyent"></input>
+												</div>
+												<div class="form__label-block form__label-block_date_tel">
+													<label>Дата рождения</label>
+													<input type="date" required name="data_rozhdeniya_kliyent"></input>
+													<label>Телефонный номер</label>
+													<input minlength="12" maxlength="12" type="text" required name="telefon_kliyent"></input>
+												</div>
+												<div class="form__label-block form__label-block_address form__label-block-last">
+													<label>Адрес прописки</label>
+													<input minlength="5" maxlength="45" type="text" required name="adres_kliyent"></input>
+												</div>
+											</form>
+											
+									</div>
+							</div>
+							
+					</li>
+					<li class="slider__slide slider__slide_2" data-currSlide="1">
+							
+							<div class="slider__layout layout">
+									<div class="slider__info">
+									
+											<form name="slideChooseForm" method="post" action="/slideChoose_Articles">
+												<div class="form__label-block form__label-block_id">
+													<label>Идентификационный код</label>
+													<input type="text" name="id_kliyent"></input>
+												</div>
+												<div class="form__label-block form__label-block_fio">
+													<label>ФИО</label>
+													<input type="text" name="fio_kliyent"></input>
+												</div>
+												<div class="form__label-block">
+													<label>Номер паспорта</label>
+													<input type="text" name="passport_kliyent"></input>
+												</div>
+												<div class="form__label-block form__label-block_date_tel">
+													<label>Дата рождения</label>
+													<input type="date" name="data_rozhdeniya_kliyent"></input>
+													<label>Телефонный номер</label>
+													<input type="text" name="telefon_kliyent"></input>
+												</div>
+												<div class="form__label-block form__label-block_address form__label-block-last">
+													<label>Адрес прописки</label>
+													<input type="text" name="adres_kliyent"></input>
+												</div>
+											</form>
+											
+									</div>
+							</div>
+							
+					</li>
+					<li class="slider__slide slider__slide_3" data-currSlide="2">
+							
+							<div class="slider__layout layout">
+									<div class="slider__info">
+									
+											<form name="slideChooseForm" method="post" action="/slideChoose_Articles">
+												<div class="form__label-block form__label-block_id">
+													<label>Идентификационный код</label>
+													<input type="text" name="id_kliyent"></input>
+												</div>
+												<div class="form__label-block form__label-block_fio">
+													<label>ФИО</label>
+													<input type="text" name="fio_kliyent"></input>
+												</div>
+												<div class="form__label-block">
+													<label>Номер паспорта</label>
+													<input type="text" name="passport_kliyent"></input>
+												</div>
+												<div class="form__label-block form__label-block_date_tel">
+													<label>Дата рождения</label>
+													<input type="date" name="data_rozhdeniya_kliyent"></input>
+													<label>Телефонный номер</label>
+													<input type="text" name="telefon_kliyent"></input>
+												</div>
+												<div class="form__label-block form__label-block_address form__label-block-last">
+													<label>Адрес прописки</label>
+													<input type="text" name="adres_kliyent"></input>
+												</div>
+											</form>
+											
+									</div>
+							</div>
+							
+					</li>
+			</ul>
+			<div class="layout slider__layout-controls">
+					<div class="slider__controls">
+							<span class="slider__arrow icon-slider-arrow-left" id="prev_slide"></span>
+							<span class="slider__arrow icon-slider-arrow-right" id="next_slide"></span>
+					</div>
+			</div>
+		 </div>
+		
+		<main class="separ_container">
+			
+		</main>
+		
+		<main class="main_container">
+			<h1 class="main_container__title">Вывод данных</h1>
+			<div id="blockForTable"></div>
+		</main>
+		
+		<video autoplay loop muted class="bgvideo" width="1366" height="768">
+			<source src="images/bg-video.mp4" type="video/mp4"></source>
+		</video>
+		
+		<div class="blackout"></div>
+
+		<!-- <script src="snow.js"></script> -->
+	</body>
+</html>

@@ -1,0 +1,68 @@
+@font-face {
+	font-family: "Circe-Bold";
+	src: 
+		local("Circe-Bold"), 
+		local("Circe Bold"),
+		url("Circe-Bold.woff") format("woff");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Circe-ExtraBold";
+	src: 
+		local("Circe-ExtraBold"), 
+		local("Circe ExtraBold"),
+		url("Circe-ExtraBold.woff") format("woff");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Circe-Light";
+	src: 
+		local("Circe-Light"), 
+		local("Circe Light"),
+		url("Circe-Light.woff") format("woff");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Circe-Regular";
+	src: 
+		local("Circe-Regular"), 
+		local("Circe Regular"),
+		url("Circe-Regular.woff") format("woff");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+  font-family: 'svg-icons';
+  src: url('svg-icons.woff?2fhgt3') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'svg-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-slider-arrow-left:before {
+  content: "\e900";
+}
+.icon-slider-arrow-right:before {
+  content: "\e901";
+}
