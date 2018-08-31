@@ -45,7 +45,7 @@
 	vertical-align: middle;
 }
 
-.table tr:not(:last-child) th,
+.table th,
 .table tr:not(:last-child) td {
 	border-bottom: 1px solid #e1e1e1;
 }

@@ -19,6 +19,7 @@ var currentTable = 'kliyent';
 var slide = 0;
 var sort = 0;
 
+/*
 $(document).ready(function() {
 		//$('.slider').hide();
 		//$('.id_field').hide();
@@ -187,7 +188,7 @@ $(document).ready(function() {
 					
 	});
 	
-	/*Show and close mobile-menu*/
+	//Show and close mobile-menu
 	var clicked = false;
 
 	$('#show_menu').click(function() { 
@@ -741,6 +742,7 @@ $(document).ready(function() {
 	
 });
 
+/*
 function changeSum() {
 
 	let fieldCalcSum = $(`li[data-currSlide$='${slide}'] input[name="choose_uslugi"]`).val();
@@ -823,4 +825,4 @@ function changeSum() {
 		
 		return string;
 	}
-
+*/

@@ -68,7 +68,7 @@
 }
 
 .menu__link:hover::before,
-.menu__link_active::before{
+.menu__link_active::before {
     width: 100%;
     transform: translateX(-50%);
 }

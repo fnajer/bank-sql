@@ -12,7 +12,7 @@ export class Navbar extends Component {
             <img className="subheader__logo" src="/assets/images/mysql-logo.jpg" width={66} height={66} alt="logo" />
           </a>
           <h1 className="subheader__caption">Панель управления</h1>
-          <Menu />
+          <Menu transitToTable={this.props.transitToTable} />
           <nav className="sidebar-mobile">
             <header className="header header_menu_mobile">
               <div className="login">
