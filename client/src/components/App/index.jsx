@@ -4,6 +4,8 @@ import './App.css';
 import Entry from '../Entry';
 import Navbar from '../Navbar';
 import Toolbar from '../Toolbar';
+import Slider from '../Slider';
+import DataTable from '../DataTable';
 
 class App extends Component {
   state = {
@@ -21,8 +23,11 @@ class App extends Component {
         {
           authenticated &&
           <Fragment>
+            <input type="text" class="id_field"></input>
             <Navbar />
             <Toolbar />
+            <Slider />
+            <DataTable />
           </Fragment>
         }
       </div>

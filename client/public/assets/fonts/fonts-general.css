@@ -1,44 +1,4 @@
 @font-face {
-	font-family: "Circe-Bold";
-	src: 
-		local("Circe-Bold"), 
-		local("Circe Bold"),
-		url("Circe-Bold.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
-}
-
-@font-face {
-	font-family: "Circe-ExtraBold";
-	src: 
-		local("Circe-ExtraBold"), 
-		local("Circe ExtraBold"),
-		url("Circe-ExtraBold.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
-}
-
-@font-face {
-	font-family: "Circe-Light";
-	src: 
-		local("Circe-Light"), 
-		local("Circe Light"),
-		url("Circe-Light.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
-}
-
-@font-face {
-	font-family: "Circe-Regular";
-	src: 
-		local("Circe-Regular"), 
-		local("Circe Regular"),
-		url("Circe-Regular.woff") format("woff");
-	font-style: normal;
-	font-weight: normal;
-}
-
-@font-face {
   font-family: 'svg-icons';
   src: url('svg-icons.woff?2fhgt3') format('woff');
   font-weight: normal;

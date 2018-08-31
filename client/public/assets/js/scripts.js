@@ -20,8 +20,8 @@ var slide = 0;
 var sort = 0;
 
 $(document).ready(function() {
-		$('.slider').hide();
-		$('.id_field').hide();
+		//$('.slider').hide();
+		//$('.id_field').hide();
 	//entry-form animation
 	$("form[name='entryForm']").submit(function(e) {
 
