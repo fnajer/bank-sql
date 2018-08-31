@@ -1,0 +1,110 @@
+
+/*header*/
+.header {
+  display: block;
+  height: 55px;
+  min-height: 50px;
+  
+  background-color: #252525;
+}
+
+.header__layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__info {
+  display: flex;
+  align-items: center;
+}
+
+.header__text {
+  margin-right: 20px;
+  
+  font: 14px "Circe-Regular";
+  color: #cfcfcf;
+}
+
+.header__text-caption {
+  color: #8d8d8d;
+}
+
+.header__search-form {
+  position: relative;
+  
+  height: 55px;
+  margin-left: 10px;
+}
+
+.header__input {
+  box-sizing: border-box;
+  width: 345px;
+  height: 100%;
+  padding: 0 55px 0 20px;   
+  margin-right: 45px;
+  
+  font: 16px "Circe-Light";
+  color: #cfcfcf;
+  background-color: #383838;
+  border: none;
+}
+
+.header__input:focus {
+  outline-color: #a88a62;
+}
+
+::-webkit-input-placeholder {color: #a6a6a6;}
+::-moz-placeholder          {color: #a6a6a6;}
+:-moz-placeholder           {color: #a6a6a6;}
+:-ms-input-placeholder     {color: #a6a6a6;}
+
+.header__submit {
+  position: absolute;
+  top: 0;
+  right: 45px;
+  
+  width: 55px;
+  height: 100%;
+  padding: 0;
+  
+  cursor: pointer;
+  background: transparent url("/assets/images/search.svg") no-repeat 50% 50%;
+  border: none;
+}
+
+.header__submit:focus {
+  outline-color: #a88a62;
+}
+
+.header_menu_mobile {
+  display: flex;
+}
+
+.link {
+  color: #cfcfcf;
+}
+
+.link:hover {
+  color: #a88a62;
+}
+
+.link:focus {
+  outline-color: #a88a62;
+}
+
+.login {
+  display: flex;
+  align-items: center;/*Для мобильного логина*/
+  margin-left: 40px;
+}
+
+.login__item {
+  display: flex;
+  margin-right: 28px;
+}
+
+.login__icon {
+  margin-right: 6px;
+  margin-top: -3px;
+}

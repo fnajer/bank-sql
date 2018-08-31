@@ -1,0 +1,258 @@
+
+.subheader {
+	display: block;
+}
+
+.subheader__caption {
+	font-size: 30px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.subheader__layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 0;/*2 способа задавать высоту чтобы не полетело - один через паддинги, другой через фиксированную высоту + min-height. Хотя паддинги однозначно лучше.*/
+}
+
+.subheader__menu-mobile-select {
+    display: none;
+    width: 38px;
+    height: 20px;
+    padding: 0 10px;
+    margin-top: 5px;
+    
+    background: transparent url("/assets/images/menu-mobile-select.svg") center center no-repeat;
+    border: none;
+    outline-color: #a88a62;
+}
+
+.subheader__logo-link {
+    display: flex;
+}
+
+
+.menu {
+    display: flex;
+}
+
+.menu__item {
+    position: relative;
+    margin-left: 40px;
+}
+
+.menu__link {
+    text-transform: uppercase;
+    font: 14px "Circe-Bold";
+    color: #252525;
+    transition: color 0.4s;
+    cursor: pointer;
+}
+
+.menu__link_disabled {
+    color: #a6a6a6;
+}
+
+.menu__link::before {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background-color: #a88a62;
+    transition: all 0.4s;
+}
+
+.menu__link:hover::before,
+.menu__link_active::before{
+    width: 100%;
+    transform: translateX(-50%);
+}
+
+.menu__link_disabled::before {
+    background-color: #a6a6a6;
+}
+
+.menu-mobile {
+    padding: 20px 0;
+}
+
+.menu-mobile__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    
+    text-transform: uppercase;
+    font: 18px "Circe-Bold";
+}
+
+.menu-mobile__close-icon {
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.menu-mobile__link {
+    display: block;
+    padding: 10px 20px 10px 60px;
+    
+    font: 16px "Circe-Light";
+    color: #252525;
+    background-repeat: no-repeat;
+    background-position: 20px 8px;
+    background-size: 25px;
+}
+.menu-mobile__link_active {
+    box-shadow: inset 3px 0 0 0 #a88a62;
+    background-color: #eee;
+}
+
+.menu-mobile__item:nth-of-type(1) .menu-mobile__link {
+    background-image: url("/assets/images/menu-catalog.svg");
+}
+
+.menu-mobile__item:nth-of-type(2) .menu-mobile__link {
+    background-image: url("/assets/images/menu-catalog.svg");
+}
+
+.menu-mobile__item:nth-of-type(3) .menu-mobile__link {
+    background-image: url("/assets/images/menu-catalog.svg");
+}
+
+.menu-mobile__item:nth-of-type(4) .menu-mobile__link {
+    background-image: url("/assets/images/menu-catalog.svg");
+}
+
+.menu-mobile__item:nth-of-type(5) .menu-mobile__link {
+    background-image: url("/assets/images/menu-catalog.svg");
+}
+
+.menu-mobile__item:nth-of-type(6) .menu-mobile__link {
+    background-image: url("/assets/images/menu-catalog.svg");
+}
+
+.menu-mobile__item:nth-of-type(7) .menu-mobile__link {
+    background-image: url("/assets/images/menu-catalog.svg");
+}
+
+.menu-mobile__item:nth-of-type(8) .menu-mobile__link {
+    background-image: url("/assets/images/menu-catalog.svg");
+}
+
+#print {
+  display: none;
+  margin-right: auto;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+#print img {
+  width: 32px;
+  height: 32px;
+}
+
+.login__icon-delete {
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
+}
+
+.status {
+  color: #cfcfcf;
+}
+
+.menu-mobile__item form {
+  text-align: center;
+}
+.menu-mobile__item label {
+  display: block;
+  margin: 2px auto;
+}
+.menu-mobile__item input {
+  background: none;
+  border: none;
+  box-shadow: 0px 0 3px 1px #000;
+  border-radius: 15px;
+  padding: 5px 7px;
+}
+
+.menu-mobile__item input[type="submit"] {
+  margin: 13px auto;
+}
+.menu-mobile__close {
+  margin-left: 28px;
+}
+
+.menu-mobile__del-user {
+  position: relative;
+  top: 4px;
+  right: -15px;
+}
+
+span {
+  z-index: 100;
+}
+
+.menu-kap {
+  display: none;
+  
+  margin-left: 15px;
+}
+
+.menu-kap a {
+  font-size: 12px;
+}
+
+#sort {
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.scale {
+  transform: scale(0.5);
+}
+
+.block-admin-query {
+  padding: 8px 15px;
+  background: darkgray;
+
+  transition: background 0.5s;
+}
+
+.field-query {
+  width: 100%;
+  padding: 2px 5px;
+  box-sizing: border-box;
+  outline-color: #987E5B;
+}
+
+.block-admin-query-color {
+  background: green;
+}
+
+
+.sidebar-mobile {
+  position: absolute;
+  top: 0;
+  right: -300px;
+  z-index: 1;
+  
+  display: none;
+  width: 300px;
+  
+  background-color: #fff;
+  transition: all 0.5s ease;
+}
+
+.sidebar-mobile_visible {
+  display: block;
+  z-index: 3;
+  right: 0px;
+}
