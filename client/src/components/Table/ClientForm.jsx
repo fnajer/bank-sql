@@ -1,16 +1,7 @@
 import React from "react";
 
-const keys = {
-  id: 0,
-  name: 1,
-  passport: 2,
-  date: 3,
-  telephone: 4,
-  address: 5,
-};
-
-const clients = ({ data: client, onChange }) => {
-  
+const clients = ({ entity: client, onChange }) => {
+  //console.log(client);
   return (
     <form name="slideChooseForm" method="post" action="/slideChoose_Articles">
       <div className="form__label-block form__label-block_id">
@@ -21,7 +12,7 @@ const clients = ({ data: client, onChange }) => {
           minLength={10}
           maxLength={10}
           name="id"
-          value={client[keys.id]}
+          value={client.id}
           onChange={onChange}
         />
       </div>
@@ -33,7 +24,7 @@ const clients = ({ data: client, onChange }) => {
           minLength={5}
           maxLength={40}
           name="name"
-          value={client[keys.name]}
+          value={client.name}
           onChange={onChange}
         />
       </div>
@@ -45,7 +36,7 @@ const clients = ({ data: client, onChange }) => {
           maxLength={8}
           required
           name="passport"
-          value={client[keys.passport]}
+          value={client.passport}
           onChange={onChange}
         />
       </div>
@@ -55,7 +46,7 @@ const clients = ({ data: client, onChange }) => {
           type="date"
           required
           name="date"
-          value={client[keys.id]}
+          value={client.date}
           onChange={onChange}
         />
         <label>Телефонный номер</label>
@@ -65,7 +56,7 @@ const clients = ({ data: client, onChange }) => {
           type="text"
           required
           name="telephone"
-          value={client[keys.telephone]}
+          value={client.telephone}
           onChange={onChange}
         />
       </div>
@@ -77,7 +68,7 @@ const clients = ({ data: client, onChange }) => {
           type="text"
           required
           name="address"
-          value={client[keys.address]}
+          value={client.address}
           onChange={onChange}
         />
       </div>

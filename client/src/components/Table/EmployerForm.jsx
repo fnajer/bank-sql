@@ -1,17 +1,6 @@
 import React from "react";
 
-const keys = {
-  id: 0,
-  name: 1,
-  passport: 2,
-  telephone: 3,
-  dateBirth: 4,
-  dateEntry: 5,
-  idPost: 6,
-  idDepart: 7,
-};
-
-const employees = ({ data: employer, onChange }) => {
+const employees = ({ entity: employer, onChange }) => {
   return (
     <form name="slideChooseForm" method="post" action="/slideChoose_Articles">
       <div className="form__label-block form__label-block_id">
@@ -20,7 +9,7 @@ const employees = ({ data: employer, onChange }) => {
           type="text"
           maxLength={10}
           name="id"
-          value={employer[keys.id]}
+          value={employer.id}
           onChange={onChange}
         />
       </div>
@@ -30,7 +19,7 @@ const employees = ({ data: employer, onChange }) => {
           type="text"
           maxLength={40}
           name="name"
-          value={employer[keys.name]}
+          value={employer.name}
           onChange={onChange}
         />
       </div>
@@ -40,7 +29,7 @@ const employees = ({ data: employer, onChange }) => {
           type="text"
           maxLength={8}
           name="passport"
-          value={employer[keys.passport]}
+          value={employer.passport}
           onChange={onChange}
         />
         <label>Телефонный номер</label>
@@ -48,7 +37,7 @@ const employees = ({ data: employer, onChange }) => {
           type="text"
           maxLength={12}
           name="telephone"
-          value={employer[keys.telephone]}
+          value={employer.telephone}
           onChange={onChange}
         />
       </div>
@@ -59,22 +48,22 @@ const employees = ({ data: employer, onChange }) => {
         <label style={{ marginRight: 15 }}>Дата рождения</label>
         <input
           type="date"
-          name="date"
+          name="dateBirth"
           style={{ marginRight: 58 }}
-          value={employer[keys.dateBirth]}
+          value={employer.dateBirth}
           onChange={onChange}
         />
         <label>Дата приема</label>
-        <input type="date" name="data_priyema" value={employer[keys.dateEntry]} />
+        <input type="date" name="dateEntry" value={employer.dateEntry} onChange={onChange} />
       </div>
       <div
         className="form__label-block form__label-block_date_tel form__label-block-last"
         style={{ width: 706 }}
       >
         <label>Код должности</label>
-        <input type="text" name="kod_dolzhnocti" style={{ marginRight: 43 }} value={employer[keys.idPost]} />
+        <input type="text" name="idPost" style={{ marginRight: 43 }} value={employer.idPost} onChange={onChange} />
         <label>Код отделения</label>
-        <input type="text" name="kod_otdeleniye" value={employer[keys.idDepart]} />
+        <input type="text" name="idDepart" value={employer.idDepart} onChange={onChange} />
       </div>
     </form>
   );

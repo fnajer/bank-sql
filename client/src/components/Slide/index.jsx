@@ -14,7 +14,7 @@ export class Slide extends Component {
     super(props);
 
     this.state = {
-      entity: this.props.data,
+      entity: {...this.props.data},
     }
   }
 
@@ -25,12 +25,13 @@ export class Slide extends Component {
   }
 
   handleInputChange = (event) => {
-    console.log(event.target.name);
+    
     const nameInput = event.target.name;
     const value = event.target.value;
+    console.log(nameInput, value);
     this.setState({
-      data: {
-        ...this.state.data,
+      entity: {
+        ...this.state.entity,
         [nameInput]: value,
       }
     })
@@ -52,7 +53,7 @@ export class Slide extends Component {
                   props => (
                     <ClientForm 
                       {...props} 
-                      data={this.state.entity}
+                      entity={this.state.entity}
                       onChange={this.handleInputChange}
                     />
                   )
@@ -64,7 +65,7 @@ export class Slide extends Component {
                   props => (
                     <EmployerForm
                       {...props}
-                      data={this.state.entity}
+                      entity={this.state.entity}
                       onChange={this.handleInputChange}
                     />
                   )

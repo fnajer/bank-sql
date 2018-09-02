@@ -12,7 +12,7 @@ const dataClient = [
     242,
     'tetet',
     23,
-    242,
+    '2018-03-01',
     'tetet',
     23,
   ],
@@ -20,7 +20,7 @@ const dataClient = [
     22,
     'efegf',
     11,
-    242,
+    '2018-03-01',
     'tetet',
     23,
   ],
@@ -37,6 +37,26 @@ const dataEmployer = [
     2,
     4,
   ],
+  [
+    34,
+    'Gaga',
+    'TR22',
+    8029903244,
+    '2018-03-01',
+    '2011-01-01',
+    2,
+    4,
+  ],
+  [
+    35,
+    'Mogo',
+    'TE11',
+    809903244,
+    '2018-03-01',
+    '2011-01-01',
+    2,
+    4,
+  ]
 ];
 
 const tableHeaders = [
@@ -66,7 +86,8 @@ class App extends Component {
     data: {
       thead: tableHeaders[0],
       tbody: dataClient,
-    }
+    },
+    table: 'clients',
   }
 
   componentWillReceiveProps(nextProps) {
@@ -77,7 +98,8 @@ class App extends Component {
           data: {
             thead: tableHeaders[0],
             tbody: dataClient,
-          }
+          },
+          table: 'clients',
         });
         break;
       case '/employees':
@@ -85,7 +107,8 @@ class App extends Component {
           data: {
             thead: tableHeaders[1],
             tbody: dataEmployer,
-          }
+          },
+          table: 'employees',
         });
         break;
       default:
@@ -124,7 +147,7 @@ class App extends Component {
             <input type="text" className="id_field"></input>
             <Navbar transitToTable={this.changeProps} />
             <Toolbar />
-            <Slider data={this.state.data.tbody} />
+            <Slider data={this.state.data.tbody} table={this.state.table} />
             <DataTable data={this.state.data} />
           </Fragment>
         }
