@@ -63,6 +63,27 @@ export class Slider extends Component {
         entity: this.transferArrToObj(this.props.data[0]),
       });
     }
+  }
+
+  prevSlide = () => {
+    let prevSlide = null;
+    this.props.data.some((entity, index) => {
+      if (entity[0] === this.state.entity.id) {
+        prevSlide = index - 1;
+        return true;
+      }
+      return false;
+    });
+    
+    if (this.props.data[prevSlide]) {
+      this.setState({
+        entity: this.transferArrToObj(this.props.data[prevSlide]),
+      });
+    } else {
+      this.setState({
+        entity: this.transferArrToObj(this.props.data[this.props.data.length - 1]),
+      });
+    }
     
   }
 
@@ -74,7 +95,7 @@ export class Slider extends Component {
           <Slide entity={this.state.entity} onChange={this.handleInputChange} num="2" currSlide="1" />
           <Slide entity={this.state.entity} onChange={this.handleInputChange} num="3" currSlide="2" />
         </ul>
-        <SliderControls nextSlide={this.nextSlide} />
+        <SliderControls nextSlide={this.nextSlide} prevSlide={this.prevSlide} />
       </div>
     )
   }
