@@ -1,6 +1,16 @@
 import React from "react";
 
-const clients = ({ data: client }) => {
+const keys = {
+  id: 0,
+  name: 1,
+  passport: 2,
+  date: 3,
+  telephone: 4,
+  address: 5,
+};
+
+const clients = ({ data: client, onChange }) => {
+  
   return (
     <form name="slideChooseForm" method="post" action="/slideChoose_Articles">
       <div className="form__label-block form__label-block_id">
@@ -10,8 +20,9 @@ const clients = ({ data: client }) => {
           required
           minLength={10}
           maxLength={10}
-          name="id_kliyent"
-          value={client.id}
+          name="id"
+          value={client[keys.id]}
+          onChange={onChange}
         />
       </div>
       <div className="form__label-block form__label-block_fio">
@@ -21,8 +32,9 @@ const clients = ({ data: client }) => {
           required
           minLength={5}
           maxLength={40}
-          name="fio_kliyent"
-          value={client.name}
+          name="name"
+          value={client[keys.name]}
+          onChange={onChange}
         />
       </div>
       <div className="form__label-block">
@@ -32,8 +44,9 @@ const clients = ({ data: client }) => {
           minLength={8}
           maxLength={8}
           required
-          name="passport_kliyent"
-          value={client.passport}
+          name="passport"
+          value={client[keys.passport]}
+          onChange={onChange}
         />
       </div>
       <div className="form__label-block form__label-block_date_tel">
@@ -41,8 +54,9 @@ const clients = ({ data: client }) => {
         <input
           type="date"
           required
-          name="data_rozhdeniya_kliyent"
-          value={client.date}
+          name="date"
+          value={client[keys.id]}
+          onChange={onChange}
         />
         <label>Телефонный номер</label>
         <input
@@ -50,8 +64,9 @@ const clients = ({ data: client }) => {
           maxLength={12}
           type="text"
           required
-          name="telefon_kliyent"
-          value={client.telephone}
+          name="telephone"
+          value={client[keys.telephone]}
+          onChange={onChange}
         />
       </div>
       <div className="form__label-block form__label-block_address form__label-block-last">
@@ -61,8 +76,9 @@ const clients = ({ data: client }) => {
           maxLength={45}
           type="text"
           required
-          name="adres_kliyent"
-          value={client.address}
+          name="address"
+          value={client[keys.address]}
+          onChange={onChange}
         />
       </div>
     </form>

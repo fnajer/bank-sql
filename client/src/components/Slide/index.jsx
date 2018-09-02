@@ -9,6 +9,33 @@ import EmployerForm from "../Table/EmployerForm";
 // import Supplier from '../Table/clients';
 
 export class Slide extends Component {
+  
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      entity: this.props.data,
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      entity: nextProps.data,
+    });
+  }
+
+  handleInputChange = (event) => {
+    console.log(event.target.name);
+    const nameInput = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      data: {
+        ...this.state.data,
+        [nameInput]: value,
+      }
+    })
+  }
+
   render() {
     const { num, currSlide } = this.props;
     return (
@@ -25,7 +52,8 @@ export class Slide extends Component {
                   props => (
                     <ClientForm 
                       {...props} 
-                      data={this.props.data}
+                      data={this.state.entity}
+                      onChange={this.handleInputChange}
                     />
                   )
                 }
@@ -36,7 +64,8 @@ export class Slide extends Component {
                   props => (
                     <EmployerForm
                       {...props}
-                      data={this.props.data}
+                      data={this.state.entity}
+                      onChange={this.handleInputChange}
                     />
                   )
                 }

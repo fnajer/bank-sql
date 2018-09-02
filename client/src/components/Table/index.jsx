@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import TableRow from './TableRow';
 
 export class Client extends Component {
+
   render() {
     const { thead, tbody } = this.props.data;
     return (
@@ -10,16 +11,16 @@ export class Client extends Component {
         <thead>
           <tr>
             {
-              thead.map(cell => (
-                <th>{cell}</th>
+              thead.map((cell, index) => (
+                <th key={index}>{cell}</th>
               ))
             }
           </tr>
         </thead>
         <tbody>
           {
-            tbody.map(row => (
-              <TableRow row={row} />
+            tbody.map((row, index) => (
+              <TableRow key={index} row={row} />
             ))
           }
         </tbody>
