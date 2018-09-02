@@ -46,15 +46,24 @@ export class Slider extends Component {
   nextSlide = () => {
     let nextSlide = null;
     this.props.data.some((entity, index) => {
-      if (entity[0] === this.state.entity[0]) {
+      console.log(entity[0], this.state.entity.id)
+      if (entity[0] === this.state.entity.id) {
         nextSlide = index + 1;
         return true;
       }
       return false;
     });
-    this.setState({
-      entity: {...this.state.data[nextSlide]},
-    });
+    
+    if (this.props.data[nextSlide]) {
+      this.setState({
+        entity: this.transferArrToObj(this.props.data[nextSlide]),
+      });
+    } else {
+      this.setState({
+        entity: this.transferArrToObj(this.props.data[0]),
+      });
+    }
+    
   }
 
   render() {
@@ -65,7 +74,7 @@ export class Slider extends Component {
           <Slide entity={this.state.entity} onChange={this.handleInputChange} num="2" currSlide="1" />
           <Slide entity={this.state.entity} onChange={this.handleInputChange} num="3" currSlide="2" />
         </ul>
-        <SliderControls />
+        <SliderControls nextSlide={this.nextSlide} />
       </div>
     )
   }
