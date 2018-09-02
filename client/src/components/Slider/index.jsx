@@ -5,23 +5,65 @@ import Slide from '../Slide';
 import SliderControls from '../SliderControls';
 
 export class Slider extends Component {
-  transferArrToObj = (arr) => {
-    let obj = {...tableKeys[this.props.table]};
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      entity: this.transferArrToObj(props.data[0]),
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      entity: this.transferArrToObj(nextProps.data[0], nextProps),
+    });
+  }
+
+  handleInputChange = (event) => {
+    
+    const nameInput = event.target.name;
+    const value = event.target.value;
+    
+    this.setState({
+      entity: {
+        ...this.state.entity,
+        [nameInput]: value,
+      }
+    })
+  }
+
+  transferArrToObj = (arr, nextProps = this.props) => {
+    let obj = {...tableKeys[nextProps.table]};
     let i = 0;
     for (i = 0; i < arr.length; i++) {
       obj[obj[i]] = arr[i];
     }
-    //console.log(this.props.table);
+
     return obj;
+  }
+
+  nextSlide = () => {
+    let nextSlide = null;
+    this.props.data.some((entity, index) => {
+      if (entity[0] === this.state.entity[0]) {
+        nextSlide = index + 1;
+        return true;
+      }
+      return false;
+    });
+    this.setState({
+      entity: {...this.state.data[nextSlide]},
+    });
   }
 
   render() {
     return (
       <div className="slider">
         <ul className="slider__wrapper" data-current={0}>
-          <Slide data={this.transferArrToObj(this.props.data[0])} num="1" currSlide="0" />
-          <Slide data={this.transferArrToObj(this.props.data[0])} num="2" currSlide="1" />
-          <Slide data={this.transferArrToObj(this.props.data[0])} num="3" currSlide="2" />
+          <Slide entity={this.state.entity} onChange={this.handleInputChange} num="1" currSlide="0" />
+          <Slide entity={this.state.entity} onChange={this.handleInputChange} num="2" currSlide="1" />
+          <Slide entity={this.state.entity} onChange={this.handleInputChange} num="3" currSlide="2" />
         </ul>
         <SliderControls />
       </div>
